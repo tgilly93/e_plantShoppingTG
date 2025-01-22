@@ -3,12 +3,17 @@ import React, { useState } from 'react';
 import ProductList from './ProductList';
 import './App.css';
 import AboutUs from './AboutUs';
+import CartItem from './CartItem';
 
 function App() {
   
   const [showProductList, setShowProductList] = useState(false);
 
   const handleGetStartedClick = () => {
+    setShowProductList(true);
+  };
+
+  const handleContinueShopping = () => {
     setShowProductList(true);
   };
 
@@ -34,6 +39,9 @@ function App() {
       </div>
       <div className={`product-list-container ${showProductList ? 'visible' : ''}`}>
         <ProductList />
+      </div>
+      <div className={`cart-container ${!showProductList ? 'visible' : ''}`}>
+        <CartItem onContinueShopping={handleContinueShopping} />
       </div>
     </div>
   );
